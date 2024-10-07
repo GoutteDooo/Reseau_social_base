@@ -122,7 +122,6 @@ module.exports.likePost = async (req, res) => {
         },
         { new: true }
       ),
-
       //Et on add l'id du post au profil de l'user
       await UserModel.findByIdAndUpdate(
         req.body.id,
@@ -132,13 +131,13 @@ module.exports.likePost = async (req, res) => {
         { new: true }
       ),
     ]);
-
     //vérifie que l'id du post a bien été trouvé
     if (!postLiked)
       return res
         .status(404)
         .send("Post not found, it might be deleted before liked.");
     //Vérifie que l'user existe bien (à priori oui, mais jsp j'ai envie de mettre la vérif quand même)
+
     if (!userLiking) return res.status(404).send("User not existing, weird.");
 
     //Return res when both updates in promise are done.
