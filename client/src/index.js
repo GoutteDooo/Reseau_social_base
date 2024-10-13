@@ -13,7 +13,8 @@ import { getUsers } from "./actions/users.action";
 //dev tools
 import { composeWithDevTools } from "redux-devtools-extension";
 import logger from "redux-logger";
-import { thunk, withExtraArgument } from "redux-thunk";
+import { thunk } from "redux-thunk";
+import { getPosts } from "./actions/post.action";
 
 const store = configureStore(
   { reducer: rootReducer, devTools: true },
@@ -21,6 +22,7 @@ const store = configureStore(
 );
 
 store.dispatch(getUsers());
+store.dispatch(getPosts());
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

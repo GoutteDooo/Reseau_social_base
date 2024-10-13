@@ -27,7 +27,7 @@ const App = () => {
 
     //déclenche l'action de getUser pour stocker dans le store
     if (uid) dispatch(getUser(uid));
-  }, [uid]);
+  }, [uid, dispatch]);
 
   return (
     <UidContext.Provider value={uid}>

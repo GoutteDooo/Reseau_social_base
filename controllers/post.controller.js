@@ -1,3 +1,4 @@
+const { log } = require("console");
 const PostModel = require("../models/post.model");
 const UserModel = require("../models/user.model");
 const { uploadErrors } = require("../utils/errors.utils");
@@ -21,19 +22,21 @@ module.exports.readPost = async (req, res) => {
     res.status(400).send(err);
   }
 };
+
 module.exports.createPost = async (req, res) => {
   let fileName;
 
-  if (req.file !== null) {
+  //traitement si file dans le Post
+  if (req.file != null) {
     try {
       //vérification du type MIME
       if (
         req.file.mimetype !== "image/jpg" &&
         req.file.mimetype !== "image/png" &&
         req.file.mimetype !== "image/jpeg"
-      )
+      ) {
         throw Error("invalid file");
-      //500000 ko MAX
+      } //500000 ko MAX
       if (req.file.size > 500000) throw Error("over max size");
     } catch (err) {
       const errors = uploadErrors(err);
@@ -51,11 +54,12 @@ module.exports.createPost = async (req, res) => {
   const newPost = new PostModel({
     posterId: req.body.posterId,
     message: req.body.message,
-    picture: req.file !== null ? "./uploads/posts/" + fileName : "",
+    picture: req.file != null ? "./uploads/posts/" + fileName : "",
     video: req.body.video,
     likers: [],
     comments: [],
   });
+  console.log("new Post : ", newPost);
 
   try {
     const post = await newPost.save();
@@ -64,6 +68,7 @@ module.exports.createPost = async (req, res) => {
     return res.status(400).send(err);
   }
 };
+
 module.exports.updatePost = async (req, res) => {
   //Vérifie si l'id du post existe
   if (!ObjectId.isValid(req.params.id)) {

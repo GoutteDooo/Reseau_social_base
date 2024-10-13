@@ -6,6 +6,9 @@ export const UPDATE_BIO = "UPDATE_BIO";
 export const FOLLOW_USER = "FOLLOW_USER";
 export const UNFOLLOW_USER = "UNFOLLOW_USER";
 
+//errors
+export const GET_USER_ERRORS = "GET_USER_ERRORS";
+
 export const getUser = (uid) => {
   return (dispatch) => {
     return axios
@@ -19,7 +22,12 @@ export const uploadPicture = (datas, id) => {
   return (dispatch) => {
     return axios
       .post(`${process.env.REACT_APP_API_URL}api/user/upload`, datas)
-      .then(() => {
+      .then((res) => {
+        if (res.data.errors) {
+          dispatch({ type: GET_USER_ERRORS, payload: res.data.errors });
+        } else {
+          dispatch({ type: GET_USER_ERRORS, payload: "" });
+        }
         return axios
           .get(`${process.env.REACT_APP_API_URL}api/user/${id}`)
           .then((res) => {
