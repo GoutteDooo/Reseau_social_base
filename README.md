@@ -17,7 +17,7 @@ Je ne prétends pas que ce soit une excellente base, mais cela fait l'affaire po
 Vous pouvez prendre tout le code si cela vous plaît, ou bien simplement une partie pour vos projets, faites comme bon vous semble.
 
 **Stacks utilisées :**
-Mongoose (MongoDB), Express, React, Nodejs, Mongoose, Multer, Bcrypt, Redux, Sass...
+React, Mongoose (MongoDB), Express,  Nodejs, Multer, Bcrypt, Redux, Sass...
 
 ---
 
