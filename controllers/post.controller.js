@@ -59,7 +59,6 @@ module.exports.createPost = async (req, res) => {
     likers: [],
     comments: [],
   });
-  console.log("new Post : ", newPost);
 
   try {
     const post = await newPost.save();
@@ -99,6 +98,7 @@ module.exports.deletePost = async (req, res) => {
   if (!ObjectId.isValid(req.params.id)) {
     return res.status(400).send("ID unknown : " + req.params.id);
   }
+  console.log("deletePost launched ! request : ", req.params.id);
   try {
     const deletedPost = await PostModel.findByIdAndDelete(req.params.id);
 

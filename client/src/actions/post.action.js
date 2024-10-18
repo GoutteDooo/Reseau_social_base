@@ -86,7 +86,7 @@ export const updatePost = (postId, message) => {
 export const deletePost = (postId) => {
   return (dispatch) => {
     return axios
-      .delete(`${process.env.REACT_APP_API_URL}api/post/` + postId)
+      .delete(`${process.env.REACT_APP_API_URL}api/post/${postId}`)
       .then(() => {
         dispatch({ type: DELETE_POST, payload: { postId } });
       })
@@ -140,6 +140,8 @@ export const deleteComment = (postId, commentId) => {
         { commentId }
       )
       .then(() => {
+        console.log(postId, commentId);
+
         dispatch({ type: DELETE_COMMENT, payload: { postId, commentId } });
       });
   };

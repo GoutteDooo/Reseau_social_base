@@ -48,7 +48,9 @@ export default function postReducer(state = initialState, action) {
       });
 
     case DELETE_POST:
-      return state.filter((post) => post._id !== action.payload.id);
+      console.log(action.payload.postId);
+
+      return state.filter((post) => post._id !== action.payload.postId);
 
     case ADD_COMMENT:
       return state;
