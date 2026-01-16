@@ -10,7 +10,7 @@ Réalisé à l'aide d'un tuto de [From Scratch](https://github.com/JustFS) :pray
 
 __Lien du repo du tuto :__ https://github.com/JustFS/mern-project
 
-Ceci est une base si vous voulez créer un réseau social type Instagram, X, Facebook.
+Ceci est une base si vous voulez créer un réseau social.
 
 Je ne prétends pas que ce soit une excellente base, mais cela fait l'affaire pour un petit projet.
 
